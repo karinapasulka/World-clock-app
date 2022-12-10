@@ -17,8 +17,17 @@ function updateTime() {
       "h:mm:ss [<small>]A[</small>]"
     );
   }
+  let bangkokElement = document.querySelector("#bangkok");
+  if (bangkokElement) {
+    let bangkokDateElement = bangkokElement.querySelector(".date");
+    let bangkokTimeElement = bangkokElement.querySelector(".time");
+    let bangkokTime = moment().tz("Asia/Bangkok");
+    bangkokDateElement.innerHTML = bangkokTime.format("MMMM Do YYYY");
+    bangkokTimeElement.innerHTML = bangkokTime.format(
+      "h:mm:ss [<small>]A[</small>]"
+    );
+  }
 }
-
 function updateCity(event) {
   let cityTimeZone = event.target.value;
   if (cityTimeZone === "current") {
@@ -36,7 +45,8 @@ function updateCity(event) {
           <div class="time">${cityTime.format(
             "h:mm:ss"
           )} <small>${cityTime.format("A")}</small></div>
-        </div>`;
+        </div>
+        <a href = "/">Back to all cities</a> `;
 }
 
 updateTime();
